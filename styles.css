@@ -1,0 +1,155 @@
+/* Estilos generales del body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px; /* Reducir el padding del header */
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 1px -1px gray; /* Reducir el tamaño de la sombra */
+}
+
+/* Logo */
+.logo-imagen {
+    width: 80px; /* Reducir el tamaño del logo */
+    height: auto;
+}
+
+/* Menú de navegación */
+nav {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list li {
+    margin: 0 10px; /* Reducir el margen entre los elementos del menú */
+}
+
+.nav-list a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    padding: 8px; /* Reducir el padding del enlace */
+    transition: color 0.3s ease;
+}
+
+/* Icono del carrito de compras */
+.icono-carrito {
+    font-size: 20px; /* Reducir el tamaño del ícono */
+    cursor: pointer;
+}
+/* Carrito emergente */
+.carrito-popup {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 50px; /* Ajusta la posición vertical */
+    right: 30px; /* Ajusta la posición horizontal */
+    width: 300px; /* Ancho del carrito */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.carrito-contenido h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#lista-carrito {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+#lista-carrito li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#total-carrito {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.btn-whatsapp {
+    display: block;
+    width: 100%;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-cerrar {
+    display: block;
+    width: 100%;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Sección de productos */
+.productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px; /* Reducir el espacio entre productos */
+    padding: 15px; /* Reducir el padding */
+}
+
+.producto {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 8px; /* Reducir el padding interno */
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 180px; /* Reducir el ancho máximo */
+    margin: auto; /* Centrar productos en su celda */
+}
+
+.producto img {
+    width: 75%; /* Reducir el tamaño de las imágenes */
+    height: auto;
+}
+
+.precio {
+    font-size: 1.2em; /* Reducir el tamaño de la fuente del precio */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px; /* Reducir el padding */
+    background-color: #f8f9fa;
+    margin-top: 20px;
+}
+
+
+
+

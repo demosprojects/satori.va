@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Ofertas</title>
-    <link rel="icon" type="image/png" href="favicon.jpg">
+    <title>Contacto - Satori/Natura</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="favicon.jpg" alt="Logo SATORI" class="logo-imagen">
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/favicon.jpg" alt="Logo SATORI" class="logo-imagen">
         </div>
         <nav>
             <ul class="nav-list">
@@ -19,8 +18,50 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
-        <!-- Ícono del carrito en el header -->
-        <div class="icono-carrito" onclick="toggleCarrito()">
-            🛒<span id="contador-carrito">(0)</span>
-        </div>
     </header>
+    
+    <section id="contacto" class="contacto">
+        <h1>Contáctanos</h1>
+        
+        <div class="informacion-contacto">
+            <h2>Información de Contacto</h2>
+            <p>Teléfono: +54 9 3735-417958</p>
+            <p>Email: contacto@satori.com</p>
+            <p>Dirección: Villa Ángela, Chaco, Argentina</p>
+            <p>Horario: Lunes a Viernes de 9:00 a 18:00</p>
+        </div>
+
+        <div class="formulario-contacto">
+            <h2>Envíanos un Mensaje</h2>
+            <form id="form-contacto">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <div class="redes-sociales">
+            <h2>Síguenos en Redes Sociales</h2>
+            <p><a href="https://instagram.com/satori.va" target="_blank">Instagram</a></p>
+            <!-- Agrega más enlaces a redes sociales si es necesario -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Satori - Villa Ángela/Chaco</p>
+        <p>Contacto: +54 9 3735-417958 | <a href="https://instagram.com/satori.va" target="_blank">Instagram</a> </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

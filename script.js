@@ -88,7 +88,7 @@ function enviarPorWhatsApp(event) {
 
     // Codificamos el mensaje para la URL
     const mensajeCodificado = encodeURIComponent(mensaje);
-    const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=+5493735417958&text=${numeroWhatsApp}&text=${mensajeCodificado}`;
+    const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=text=${numeroWhatsApp}&text=${mensajeCodificado}`;
 
     // Abrimos el enlace en una nueva ventana
     window.open(enlaceWhatsApp, "_blank");

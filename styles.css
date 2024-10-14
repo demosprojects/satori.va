@@ -1,9 +1,9 @@
-/* Estilos generales del body */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 14px; /* Tamaño de fuente más pequeño */
+    font-size: 1rem;
 }
 
 /* Header */
@@ -11,14 +11,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 16px; /* Reducir el padding del header */
+    padding: 8px 16px;
     background-color: #f8f9fa;
-    box-shadow: 0 2px 1px -1px gray; /* Reducir el tamaño de la sombra */
+    box-shadow: 0 2px 1px -1px gray;
 }
 
 /* Logo */
 .logo-imagen {
-    width: 80px; /* Reducir el tamaño del logo */
+    width: 80px;
     height: auto;
 }
 
@@ -37,45 +37,46 @@ nav {
 }
 
 .nav-list li {
-    margin: 0 10px; /* Reducir el margen entre los elementos del menú */
+    margin: 0 10px;
 }
 
 .nav-list a {
     text-decoration: none;
     font-weight: bold;
     color: #333;
-    padding: 8px; /* Reducir el padding del enlace */
+    padding: 8px;
     transition: color 0.3s ease;
 }
 
 /* Icono del carrito de compras */
 .icono-carrito {
-    font-size: 20px; /* Reducir el tamaño del ícono */
+    font-size: 20px;
     cursor: pointer;
 }
+
 /* Carrito emergente */
 .carrito-popup {
-    display: none; /* Oculto por defecto */
     position: fixed;
-    top: 50px; /* Ajusta la posición vertical */
-    right: 30px; /* Ajusta la posición horizontal */
-    width: 300px; /* Ancho del carrito */
+    top: 50px;
+    right: -100%; /* Inicialmente oculto fuera de la vista */
+    width: 300px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 8px;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    z-index: 1000;
+    transition: right 0.3s ease; /* Animación de deslizamiento suave */
 }
+
+.carrito-popup.mostrar {
+    right: 30px; /* Desplazar dentro de la vista cuando se muestre */
+}
+
+
 
 .carrito-contenido h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
-}
-
-#lista-carrito {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 15px;
 }
 
 #lista-carrito li {
@@ -83,6 +84,15 @@ nav {
     justify-content: space-between;
     padding: 8px 0;
     border-bottom: 1px solid #ddd;
+}
+
+#lista-carrito li button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #total-carrito {
@@ -113,6 +123,7 @@ nav {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .btn-agregar {
     background-color: #28a745;
     color: white;
@@ -131,36 +142,67 @@ nav {
 .productos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px; /* Reducir el espacio entre productos */
-    padding: 15px; /* Reducir el padding */
+    gap: 15px;
+    padding: 15px;
+}
+
+@media (max-width: 480px) {
+    .productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 320px) {
+    .productos {
+        grid-template-columns: 1fr;
+    }
 }
 
 .producto {
     text-align: center;
     border: 1px solid #ccc;
-    padding: 8px; /* Reducir el padding interno */
+    padding: 8px;
     border-radius: 8px;
     background-color: #fff;
-    max-width: 180px; /* Reducir el ancho máximo */
-    margin: auto; /* Centrar productos en su celda */
+    max-width: 180px;
+    margin: auto;
 }
 
 .producto img {
-    width: 75%; /* Reducir el tamaño de las imágenes */
+    width: 100%;
     height: auto;
 }
-
-.precio {
-    font-size: 1.2em; /* Reducir el tamaño de la fuente del precio */
-}
-
-/* Footer */
 footer {
-    text-align: center;
-    padding: 15px; /* Reducir el padding */
-    background-color: #f8f9fa;
-    margin-top: 20px;
+    background-color: #f8f9fa; /* Color de fondo del footer */
+    padding: 10px; /* Añade padding */
+    text-align: center; /* Centra el contenido del footer */
+    border-top: 1px solid #ddd; /* Añade una línea divisoria */
+    
+    /* Estilos para hacer que el footer sea fijo */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    
+    /* Estilos adicionales para móviles */
+    font-size: 14px; /* Reducir el tamaño del texto en móviles */
 }
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    footer {
+        padding: 8px; /* Reduce el padding en móviles */
+        font-size: 12px; /* Aún más pequeño el texto */
+        line-height: 1.4; /* Mejora la legibilidad con un poco más de espacio */
+    }
+    
+    .productos {
+        grid-template-columns: repeat(1, 1fr); /* Mostrar los productos en una sola columna */
+        padding-bottom: 80px; /* Añadir un padding inferior para evitar que el footer cubra los productos */
+    }
+}
+
 
 
 

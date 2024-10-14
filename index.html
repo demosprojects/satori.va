@@ -20,17 +20,17 @@
             </ul>
         </nav>
         <!-- Ícono del carrito en el header -->
-        <div class="icono-carrito" onclick="toggleCarrito()">
+        <div class="icono-carrito" onclick="toggleCarrito()" aria-label="Ver carrito" title="Ver carrito">
             🛒<span id="contador-carrito">(0)</span>
         </div>
     </header>
 
-     <!-- Ventana emergente del carrito -->
-     <div id="carrito-popup" class="carrito-popup">
+    <!-- Ventana emergente del carrito -->
+    <div id="carrito-popup" class="carrito-popup">
         <div class="carrito-contenido">
             <h2>Carrito</h2>
             <ul id="lista-carrito">
-                <li>No hay productos en el carrito.</li>
+                <!-- Aquí se mostrarán los productos del carrito -->
             </ul>
             <p id="total-carrito">Total: $0.00</p>
             <a id="enviarWhatsapp" href="#" class="btn-whatsapp" target="_blank">Enviar por WhatsApp</a>
@@ -38,13 +38,11 @@
         </div>
     </div>
     
-
     <!-- Sección de productos -->
     <section id="productos" class="productos">
         <div class="producto">
             <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/ervadoce.jpg" alt="Desodorante">
-            <h2>ErvaDoce - Desodorante
-                /antitranspirante</h2>
+            <h2>ErvaDoce - Desodorante /antitranspirante</h2>
             <p class="precio">$4.300</p>
             <button class="btn-agregar" onclick="agregarAlCarrito('ErvaDoce - Desodorante/antitranspirante', 4300)">Agregar al carrito</button>
         </div>
@@ -52,7 +50,7 @@
             <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/tododia.jpg" alt="BodySplash">
             <h2>BodySplash - TodoDia </h2>
             <p class="precio">$17.300</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('BodySplash - TodoDia', 17300.00)">Agregar al carrito</button>
+            <button class="btn-agregar" onclick="agregarAlCarrito('BodySplash - TodoDia', 17300)">Agregar al carrito</button>
         </div>
         <div class="producto">
             <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
@@ -61,54 +59,71 @@
             <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://via.placeholder.com/300" alt="Producto 3">
-            <h2>Producto 3</h2>
-            <p class="precio">$15.00</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('Producto 3', 15.00)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://via.placeholder.com/300" alt="Producto 3">
-            <h2>Producto 3</h2>
-            <p class="precio">$15.00</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('Producto 3', 15.00)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://via.placeholder.com/300" alt="Producto 3">
-            <h2>Producto 3</h2>
-            <p class="precio">$15.00</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('Producto 3', 15.00)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://via.placeholder.com/300" alt="Producto 3">
-            <h2>Producto 3</h2>
-            <p class="precio">$15.00</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('Producto 3', 15.00)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://via.placeholder.com/300" alt="Producto 3">
-            <h2>Producto 3</h2>
-            <p class="precio">$15.00</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('Producto 3', 15.00)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://via.placeholder.com/300" alt="Producto 3">
-            <h2>Producto 3</h2>
-            <p class="precio">$15.00</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('Producto 3', 15.00)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://via.placeholder.com/300" alt="Producto 3">
-            <h2>Producto 3</h2>
-            <p class="precio">$15.00</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('Producto 3', 15.00)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
+            <h2>SprayProtector - Lumina</h2>
+            <p class="precio">$10.720</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2024 Satori - Villa Ángela/Chaco</p>
-        <p>Contacto: Teléfono: +54 9 3735-417958 | <a href="https://instagram.com/satori.va" target="_blank">Instagram</a> </p>
+        <p>Contacto: +54 9 3735-417958 | <a href="https://instagram.com/satori.va" target="_blank">Instagram</a> </p>
     </footer>
-
 
     <script src="script.js"></script>
 </body>

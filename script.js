@@ -18,9 +18,35 @@ function guardarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
+// Función para abrir la imagen en un modal
+function abrirImagen(src) {
+    const modal = document.getElementById('modal');
+    const imagenAmpliada = document.getElementById('imagen-ampliada');
+    modal.style.display = 'block';
+    imagenAmpliada.src = src;
+}
+
+// Función para cerrar el modal
+function cerrarImagen() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+
 // Función para agregar un producto al carrito
 function agregarAlCarrito(nombreProducto, precio) {
-    carrito.push({ nombre: nombreProducto, precio: precio });
+    // Verificar si el producto ya existe en el carrito
+    const productoExistente = carrito.find(item => item.nombre === nombreProducto);
+    
+    if (productoExistente) {
+        // Si el producto ya existe, aumentar la cantidad
+        productoExistente.cantidad += 1;
+        productoExistente.precioTotal += precio; // Actualizar el precio total por producto
+    } else {
+        // Si el producto no existe, agregarlo al carrito
+        carrito.push({ nombre: nombreProducto, precio: precio, cantidad: 1, precioTotal: precio });
+    }
+
     guardarCarrito(); // Guardamos el carrito
     actualizarCarrito(); // Actualizamos el carrito visual
 }
@@ -35,8 +61,21 @@ function actualizarCarrito() {
 
     carrito.forEach((producto) => {
         const li = document.createElement('li');
-        li.textContent = `${producto.nombre} - $${producto.precio}`;
+        li.textContent = `${producto.nombre} (x${producto.cantidad}) - $${producto.precioTotal.toFixed(2)}`;
         
+        // Añadir botones para disminuir y aumentar la cantidad
+        const btnMenos = document.createElement('button');
+        btnMenos.textContent = '-';
+        btnMenos.onclick = () => {
+            modificarCantidad(producto.nombre, -1);
+        };
+
+        const btnMas = document.createElement('button');
+        btnMas.textContent = '+';
+        btnMas.onclick = () => {
+            modificarCantidad(producto.nombre, 1);
+        };
+
         // Añadir un botón para eliminar el producto
         const btnEliminar = document.createElement('button');
         btnEliminar.textContent = 'Eliminar';
@@ -44,14 +83,34 @@ function actualizarCarrito() {
             eliminarDelCarrito(producto.nombre);
         };
         
+        li.appendChild(btnMenos);
+        li.appendChild(btnMas);
         li.appendChild(btnEliminar);
         listaCarrito.appendChild(li);
         
-        total += producto.precio; // Sumar al total
+        total += producto.precioTotal; // Sumar al total
     });
 
     totalCarrito.textContent = `Total: $${total.toFixed(2)}`; // Actualizar el total
     document.getElementById('contador-carrito').textContent = `(${carrito.length})`; // Actualizar el contador
+}
+
+// Función para modificar la cantidad de un producto en el carrito
+function modificarCantidad(nombreProducto, cantidad) {
+    const producto = carrito.find(item => item.nombre === nombreProducto);
+    
+    if (producto) {
+        producto.cantidad += cantidad;
+        producto.precioTotal = producto.cantidad * producto.precio;
+
+        // Si la cantidad llega a 0, eliminar el producto del carrito
+        if (producto.cantidad <= 0) {
+            eliminarDelCarrito(nombreProducto);
+        } else {
+            guardarCarrito(); // Guardar cambios
+            actualizarCarrito(); // Actualizar visual
+        }
+    }
 }
 
 // Función para eliminar un producto del carrito
@@ -80,15 +139,15 @@ function enviarPorWhatsApp(event) {
     let total = 0;
 
     carrito.forEach(item => {
-        mensaje += `${item.nombre} - $${item.precio.toFixed(2)}\n`;
-        total += item.precio;
+        mensaje += `${item.nombre} (x${item.cantidad}) - $${item.precioTotal.toFixed(2)}\n`;
+        total += item.precioTotal;
     });
 
     mensaje += `\nTotal: $${total.toFixed(2)}`;
 
     // Codificamos el mensaje para la URL
     const mensajeCodificado = encodeURIComponent(mensaje);
-    const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=text=${numeroWhatsApp}&text=${mensajeCodificado}`;
+    const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensajeCodificado}`;
 
     // Abrimos el enlace en una nueva ventana
     window.open(enlaceWhatsApp, "_blank");

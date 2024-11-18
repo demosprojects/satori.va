@@ -1,24 +1,54 @@
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     font-size: 1rem;
+    background-color: #f4f4f4;
+    color: #333;
+}
+/* Estilo para el cargador */
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la pantalla */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+   background-color: rgba(255, 255, 255, 0.822);/* Fondo blanco */
+    z-index: 9999; /* Para que esté sobre el contenido */
 }
 
+/* Estilo para el SVG (cargador) */
+.spinner {
+    width: 50px; /* Ajusta el tamaño del SVG */
+    height: 50px;
+}
+
+/* Estilo para el contenido */
+.hidden {
+    display: none; /* Ocultar contenido al inicio */
+}
+
+/* Estilo para mostrar el contenido después de la carga */
+.show {
+    display: block;
+}
 /* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 16px;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 1px -1px gray;
+    background-color: #ff7e5f; /* Color sólido */
+    background: linear-gradient(90deg, #161615, #b6b2ae);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo */
 .logo-imagen {
-    width: 80px;
+    width: 90px;
     height: auto;
 }
 
@@ -43,48 +73,112 @@ nav {
 .nav-list a {
     text-decoration: none;
     font-weight: bold;
-    color: #333;
+    color: white;
     padding: 8px;
-    transition: color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
+.nav-list a:hover {
+    background-color: #ff5a5f;
+    transform: scale(1.1);
+}
 /* Icono del carrito de compras */
 .icono-carrito {
     font-size: 20px;
     cursor: pointer;
+    color: white;
 }
 
+.icon-link {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
 /* Carrito emergente */
 .carrito-popup {
     position: fixed;
     top: 50px;
-    right: -100%; /* Inicialmente oculto fuera de la vista */
+    right: -100%;
     width: 300px;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 8px;
     z-index: 1000;
-    transition: right 0.3s ease; /* Animación de deslizamiento suave */
+    transition: right 0.3s ease;
 }
 
 .carrito-popup.mostrar {
-    right: 30px; /* Desplazar dentro de la vista cuando se muestre */
+    right: 30px;
 }
 
+.carrito-popup h2 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+    border-bottom: 2px solid #ff7e5f;
+    padding-bottom: 10px;
+}
 
-
-.carrito-contenido h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+/* Estilos para los elementos del carrito */
+#lista-carrito {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 #lista-carrito li {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    align-items: center;
+    padding: 10px 0;
     border-bottom: 1px solid #ddd;
 }
+
+#lista-carrito img {
+    width: 50px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+#lista-carrito .nombre-producto {
+    flex: 1;
+    font-size: 1rem;
+    color: #333;
+}
+
+#lista-carrito .cantidad {
+    font-size: 1rem;
+    color: #777;
+    margin-right: 10px;
+}
+
+#lista-carrito .precio-producto {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #28a745;
+}
+.descuento {
+    font-family: 'Times New Roman', Times, serif;
+}
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 15px; /* Añadir margen superior */
+}
+
+.precio {
+    margin-top: 15px; /* Añadir margen superior */
+    font-weight: bold; /* Resaltar el precio */
+}
+
+#imagen-producto {
+    margin-top: 15px;
+    max-width: 100px; /* Limitar el ancho de la imagen */
+}
+
 
 #lista-carrito li button {
     background-color: #dc3545;
@@ -125,7 +219,7 @@ nav {
 }
 
 .btn-agregar {
-    background-color: #28a745;
+    background-color: #ff768f;
     color: white;
     border: none;
     padding: 10px;
@@ -135,9 +229,17 @@ nav {
 }
 
 .btn-agregar:hover {
-    background-color: #218838;
+    background-color: #ff768f;
 }
-
+.btn-agregarrifa{
+    background-color: #ec002b;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
 /* Sección de productos */
 .productos {
     display: grid;
@@ -146,15 +248,16 @@ nav {
     padding: 15px;
 }
 
-@media (max-width: 480px) {
+/* Estilos responsive */
+@media (max-width: 768px) {
     .productos {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets y móviles */
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 480px) {
     .productos {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(1, 1fr); /* Una columna en móviles */
     }
 }
 
@@ -172,23 +275,98 @@ nav {
     width: 100%;
     height: auto;
 }
-footer {
-    background-color: #f8f9fa; /* Color de fondo del footer */
-    padding: 10px; /* Añade padding */
-    text-align: center; /* Centra el contenido del footer */
-    border-top: 1px solid #ddd; /* Añade una línea divisoria */
-    
-    /* Estilos para hacer que el footer sea fijo */
+/* Estilos del modal */
+.modal {
+    display: none;
     position: fixed;
-    bottom: 0;
+    z-index: 1000;
     left: 0;
+    top: 0;
     width: 100%;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    
-    /* Estilos adicionales para móviles */
-    font-size: 14px; /* Reducir el tamaño del texto en móviles */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
 }
 
+.modal-contenido {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+    color: #ccc;
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 20px 10px;
+    text-align: center;
+    border-top: 4px solid #ff7e5f; /* Línea superior en color llamativo */
+    font-size: 0.9rem;
+    position: relative;
+}
+
+/* Estilo de los enlaces en el footer */
+footer a {
+    color: #ff7e5f; /* Color llamativo para los enlaces */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffd1b3; /* Color más claro al pasar el ratón */
+}
+
+/* Iconos sociales */
+.footer-icons {
+    margin: 20px 0;
+}
+
+.footer-icons a {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-icons a:hover {
+    color: #ff7e5f;
+    transform: scale(1.1); /* Animación al pasar el ratón */
+}
+
+/* Texto adicional */
+.footer-text {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+.footer-visible {
+    opacity: 1; /* Hace el footer visible */
+}
+
+/* Solución para evitar el desbordamiento del body */
+body {
+    margin: 0; /* Elimina márgenes adicionales */
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
 /* Ajustes para pantallas pequeñas (móviles) */
 @media (max-width: 480px) {
     footer {
@@ -198,7 +376,6 @@ footer {
     }
     
     .productos {
-        grid-template-columns: repeat(1, 1fr); /* Mostrar los productos en una sola columna */
         padding-bottom: 80px; /* Añadir un padding inferior para evitar que el footer cubra los productos */
     }
 }

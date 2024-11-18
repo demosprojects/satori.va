@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Satori/Natura</title>
+    <title> Satori - Natura</title>
     <link rel="icon" href="https://raw.githubusercontent.com/demosprojects/imagenes/main/favicon.jpg" type="image/jpg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Cargador SVG -->
+     <div id="loader" class="loader">
+        <svg fill="#D30392FF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="spinner">
+            <circle cx="4" cy="12" r="3">
+                <animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/>
+            </circle>
+            <circle cx="12" cy="12" r="3">
+                <animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/>
+            </circle>
+            <circle cx="20" cy="12" r="3">
+                <animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/>
+            </circle>
+        </svg>
+    </div>
     <header>
         <div class="logo">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/favicon.jpg" alt="Logo SATORI" class="logo-imagen">
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/favicon-png.png" alt="Logo SATORI" class="logo-imagen">
         </div>
         <nav>
             <ul class="nav-list">
                 <li><a href="index.html">Productos</a></li>
                 <li><a href="ofertas.html">Ofertas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
-        <!-- Ícono del carrito en el header -->
         <div class="icono-carrito" onclick="toggleCarrito()" aria-label="Ver carrito" title="Ver carrito">
             🛒<span id="contador-carrito">(0)</span>
         </div>
@@ -37,95 +49,141 @@
             <button onclick="toggleCarrito()" class="btn-cerrar">Cerrar</button>
         </div>
     </div>
-    
-    <!-- Sección de productos -->
+    <!-- Modal para ampliar imagen -->
+    <div id="modal" class="modal" onclick="cerrarImagen()">
+        <span class="cerrar">&times;</span>
+        <img class="modal-contenido" id="imagen-ampliada">
+    </div>
+  <!-- Sección de productos -->
     <section id="productos" class="productos">
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/ervadoce.jpg" alt="Desodorante">
-            <h2>ErvaDoce - Desodorante /antitranspirante</h2>
-            <p class="precio">$4.300</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('ErvaDoce - Desodorante/antitranspirante', 4300)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/rifaproductos.jpg" alt="" onclick="abrirImagen(this.src)">
+            <h2>¡Adquirí tu número para la rifa!</h2>
+            <p>Crema corporal y su repuesto, Body Splash, Jabones caja x5 y crema para pies.</p>
+            <p class="precio">$1.000</p>
+            <button class="btn-agregarrifa" onclick="agregarAlCarrito('Rifa Kit COMPLETO de Natura', 1000)">¡Quiero un número!</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/tododia.jpg" alt="BodySplash">
-            <h2>BodySplash - TodoDia </h2>
-            <p class="precio">$17.300</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('BodySplash - TodoDia', 17300)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/bodysplashhojasdelimonyguanabana.jpg" alt="BodySplash" onclick="abrirImagen(this.src)">
+            <h2>Body Splash Tododia Hojas de limón y guanabána</h2>
+            <p class="precio">$17.800</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Body Splash Tododia Hojas de limón y guanabána', 17800)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/hierbalimonymentabody.jpg" alt="BodySplash" onclick="abrirImagen(this.src)">
+            <h2>Body Splash Tododia Hierba, limón y menta</h2>
+            <p class="precio">$17.800</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Body Splash Tododia Hierba, limón y menta ', 17800)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/cremaparapieshlg.jpg" alt="CremaPies" onclick="abrirImagen(this.src)">
+            <h2>Tododia hidratante para pies Hojas de limón y guanabána</h2>
+            <p class="precio">$5.750</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Tododia hidratante para pies Hojas de limón y guanabána', 5750)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/tododiacremacorporal.jpg" alt="Crema corporal Hojas de limón y guanábana" onclick="abrirImagen(this.src)">
+            <h2>Tododia crema corporal Hojas de limón y guanábana</h2>
+            <p class="precio">$10.800</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Tododia crema corporal Hojas de limón y guanábana', 10800)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/repuestocremacorporal.jpg" alt="" onclick="abrirImagen(this.src)">
+            <h2>Tododia repuesto crema corporal Hojas de limón y guanábana</h2>
+            <p class="precio">$6.850</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Tododia repuesto crema corporal Hojas de limón y guanábana', 6850)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/jabonesx5tododiapequeño.jpg" alt="Jabones tododia caja x5" onclick="abrirImagen(this.src)">
+            <h2>Jabones tododia caja x5 Hojas de limón y guanabána</h2>
+            <p class="precio">$6.850</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Jabones tododia caja x5 Hojas de limón y guanabána', 6850)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/jabonesunidad.jpeg" alt="Jabones tododia" onclick="abrirImagen(this.src)">
+            <h2>Jabones tododia por unidad Hojas de limón y guanabana</h2>
+            <p class="precio">$1.500</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Jabones tododia por unidad Hojas de limón y guanabana', 1500)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/pataua.jpg" alt="Pataua Acondicionador Repuesto" onclick="abrirImagen(this.src)">
+            <h2>Ekos repuesto acondicionador Patauá</h2>
+            <p class="precio">$6.850</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Ekos repuesto acondicionador Patauá', 6850)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/jabonervadoce.jpg" alt="jabón liquido para manos ErvaDoce" onclick="abrirImagen(this.src)">
+            <h2>Jabón liquido para manos ErvaDoce</h2>
+            <p class="precio">$8.500</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Jabón liquido para manos ErvaDoce', 8500)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/lumina.png" alt="Spray para peinar Lumina" onclick="abrirImagen(this.src)">
+            <h2>Spray para peinar Lumina</h2>
+            <p class="precio">$10.700</p>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Spray para peinar Lumina', 10700)">Agregar al carrito</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/rollonbyn.png" alt="Desodorante" onclick="abrirImagen(this.src)">
+            <h2>Roll-on ErvaDoce</h2>
+            <p class="precio"></p>
+             <button class="btn-agregar" >NO DISPONIBLE</button>
         </div>
         <div class="producto">
-            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/luminaspray.jpeg" alt="SprayProtector">
-            <h2>SprayProtector - Lumina</h2>
-            <p class="precio">$10.720</p>
-            <button class="btn-agregar" onclick="agregarAlCarrito('SprayProtector', 10720)">Agregar al carrito</button>
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/byncremacorporal.jpg" alt="TodoDia jabón líquido corporal" onclick="abrirImagen(this.src)">
+            <h2>Tododia jabón líquido corporal Té de manzanilla y lavanda</h2>
+            <p class="precio"></p>
+            <button class="btn-agregar" >NO DISPONIBLE</button>
+        </div>
+        <div class="producto">
+            <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/bynliberta.jpg" alt="Perfume Humor Liberta" onclick="abrirImagen(this.src)">
+            <h2>Perfume Humor Liberta</h2>
+            <p class="precio"></p>
+            <button class="btn-agregar" >NO DISPONIBLE</button>
         </div>
     </section>
-
-    <footer>
+    <footer class="footer-hidden">
         <p>&copy; 2024 Satori - Villa Ángela/Chaco</p>
-        <p>Contacto: +54 9 3735-417958 | <a href="https://instagram.com/satori.va" target="_blank">Instagram</a> </p>
+        <p>Redes sociales:
+            <a href="https://instagram.com/satori.va" target="_blank" class="icon-link">
+                <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/contactoig.png" alt="Instagram" style="width: 24px; vertical-align: middle;">
+            </a>
+            |
+            <a href="https://wa.me/5493735417958" target="_blank" class="icon-link">
+                <img src="https://raw.githubusercontent.com/demosprojects/imagenes/main/whatsapp.png" alt="WhatsApp" style="width: 24px; vertical-align: middle;">
+            </a>
+        </p>
+         <p>Diseñado y desarrollado por demosprojects.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const footer = document.querySelector('footer');
+    
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+    
+            // Si el usuario ha llegado al final de la página, muestra el footer
+            if (scrollTop + windowHeight >= documentHeight) {
+                footer.classList.add('footer-visible'); // Muestra el footer
+            }
+        });
+    </script>  
+    <script>
+    // Cuando la página haya terminado de cargar
+    window.onload = function() {
+    // Muestra el contenido después de un pequeño retraso para que el cargador se vea
+    setTimeout(function() {
+        // Oculta el cargador
+        document.getElementById("loader").style.display = "none";
+        
+        // Muestra el contenido
+        document.getElementById("content").classList.add("show");
+    }, 1000); // 1000 ms = 1 segundos de espera
+};
+    </script>
 </body>
 </html>
 
